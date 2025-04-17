@@ -38,7 +38,7 @@ const LocationMap: React.FC = () => {
           {/* Mapa Interactivo */}
           <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1234567890123!2d-65.307942!3d-24.194411!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941b1a1234567890%3A0xabcdef1234567890!2sCaseros%2085%2C%20San%20Salvador%20de%20Jujuy%2C%20Jujuy%2C%20Argentina!5e0!3m2!1ses-419!2sar!4v1610000000000!5m2!1ses-419!2sar"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4477.9161570657425!2d-65.2942610237698!3d-24.199933085364343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941b0f538002dc11%3A0xb2ecd19d0fdd63bf!2sCaseros%2085%2C%20Y4600%20San%20Salvador%20de%20Jujuy%2C%20Jujuy!5e1!3m2!1sen!2sar!4v1744933090657!5m2!1sen!2sar"
               width="100%"
               height="100%"
               style={{ border: 0 }}
