@@ -94,14 +94,14 @@ const ContactForm: React.FC = () => {
           {/* Imagen + frase + redes */}
           <div className="bg-black p-8 flex flex-col items-center justify-center text-center">
             <Image
-              src="/wolfgym3.jpg" // ⚠️ Cambiá esto por cualquier imagen tuya del gym
+              src="/arnold.jpg"
               alt="Wolf Gym"
               width={250}
               height={250}
               className="mb-6 rounded-lg shadow-md object-cover"
             />
             <p className="italic text-gray-300">
-              "La resistencia que enfrentás físicamente en el gimnasio y la resistencia que enfrentás en la vida solo pueden construir un carácter fuerte."
+              &quot;La resistencia que enfrentás físicamente en el gimnasio y la resistencia que enfrentás en la vida solo pueden construir un carácter fuerte.&quot;
             </p>
             <span className="text-sm text-red-500 mt-2 font-semibold">— Arnold Schwarzenegger</span>
 

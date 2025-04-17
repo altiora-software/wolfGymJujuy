@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { FaDumbbell, FaRunning, FaUsers, FaTimes, FaTrophy, FaUserTie } from "react-icons/fa";
+import { FaDumbbell, FaRunning, FaUsers, FaTimes, FaUserTie } from "react-icons/fa";
 
 const AboutUs: React.FC = () => {
   const images = [
