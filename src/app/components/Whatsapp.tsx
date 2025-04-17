@@ -1,26 +1,25 @@
-// Botón de WhatsApp Flotante
+// Botón de WhatsApp Flotante - Wolf Gym
 import Image from "next/image";
 import Link from "next/link";
 
 const whatsapp = {
   name: "whatsapp",
   icon: "/icons/whatsapp.svg",
-  href: "https://wa.me/3415836259?text=%C2%A1Hola!%20👋%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Plaza%20Chess.%20%C2%A1Muchas%20gracias!%20%F0%9F%98%8A♟️",
+  href: "https://wa.me/5493884296102?text=¡Hola! 👋 Quiero saber más sobre las membresías de Wolf Gym 💪🔥",
 };
-
 
 const WhatsAppButton: React.FC = () => {
   return (
-    <div className="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 shadow-2xl hover:bg-green-600 transition-all z-50 animate-bounce">
+    <div className="fixed bottom-6 right-6 bg-green-600 text-white rounded-full p-4 shadow-2xl hover:bg-green-700 transition-all z-50 animate-bounce">
       <Link
         key={whatsapp.name}
         href={whatsapp.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:opacity-75 transition"
+        className="hover:opacity-80 transition"
       >
         <Image
-          src="/icons/whatsapp.svg"
+          src={whatsapp.icon}
           alt="WhatsApp"
           width={24}
           height={24}
