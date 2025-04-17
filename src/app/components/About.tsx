@@ -20,7 +20,7 @@ const AboutUs: React.FC = () => {
       name: "Martín Rivas",
       role: "Entrenador de Fuerza y Musculación",
       bio: "Especialista en rutinas de hipertrofia, fuerza máxima y recomposición corporal. Más de 10 años formando cuerpos fuertes.",
-      image: "/profe.jpg",
+      image: "/profe.jpeg",
     },
     {
       name: "Lucía Gómez",
