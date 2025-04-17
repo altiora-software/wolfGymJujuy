@@ -122,7 +122,7 @@ const Membership: React.FC = () => {
                 </ul>
                 <div className="mt-6 text-center">
                   <a
-                    href="https://wa.me/5493885123456"
+                    href={`https://wa.me/5493884296102?text=${encodeURIComponent(`¡Hola! 👋 Estoy interesado/a en el plan *${selectedPlan.label}* 💪🔥. Me gustaría obtener más información.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition"
