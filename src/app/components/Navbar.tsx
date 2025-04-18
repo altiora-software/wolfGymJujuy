@@ -53,6 +53,12 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <Link
+              href="/tienda"
+              className="text-white hover:text-red-500 text-sm font-semibold transition"
+            >
+              Tienda Online
+            </Link>
+            <Link
               href="/login"
               className="text-white hover:text-red-500 text-sm font-semibold transition"
             >
