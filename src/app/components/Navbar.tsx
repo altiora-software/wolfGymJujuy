@@ -97,7 +97,12 @@ const Navbar: React.FC = () => {
               {item}
             </Link>
           ))}
-          {/* Login también en mobile */}
+          <Link
+              href="/tienda"
+              className="text-white hover:text-red-500 text-sm font-semibold transition"
+            >
+              Tienda Online
+            </Link>
           <Link
             href="/login"
             className="text-white hover:bg-red-600 bg-red-500 px-4 py-2 rounded-md text-sm font-semibold transition"
