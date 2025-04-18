@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ShoppingCart, Home } from "lucide-react";
 
 type Product = {
@@ -53,7 +54,7 @@ const TiendaPage: React.FC = () => {
     <div className="bg-[#121212] min-h-screen text-white">
       {/* Navbar */}
       <header className="bg-[#1f1f1f] shadow-md py-3 px-4 md:px-6 flex justify-between items-center sticky top-0 z-50">
-        <a href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logosinfondo.png"
             alt="Wolf Gym Logo"
@@ -61,15 +62,15 @@ const TiendaPage: React.FC = () => {
             height={50}
             className="w-auto h-10"
           />
-        </a>
+        </Link>
 
         <nav className="flex gap-4 text-sm sm:text-base">
-          <a
+          <Link
             href="/"
             className="flex items-center gap-1 hover:text-red-500 transition"
           >
             <Home size={18} /> Inicio
-          </a>
+          </Link>
           <a
             href="#carrito"
             className="flex items-center gap-1 hover:text-red-500 transition"
