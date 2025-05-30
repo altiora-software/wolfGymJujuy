@@ -4,9 +4,10 @@ import prisma from "@/lib/prisma";
 
 export async function POST(req: Request) {
   try {
+    console.log('req', req);
     const { email, password, name, role } = await req.json();
 
-    if (!email || !password || !name || !role) {
+    if (!email || !password || !name ) {
       return NextResponse.json(
         { success: false, message: "Faltan campos obligatorios." },
         { status: 400 }

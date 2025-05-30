@@ -1,13 +1,12 @@
 // src/app/api/auth/validate-token/route.ts
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { compareAsc } from "date-fns";
+import prisma from "../../../../lib/db";
 
 export async function POST(req: Request) {
   try {
     const { token } = await req.json();
 
-    const user = await db.user.findFirst({
+    const user = await prisma.user.findFirst({
       where: {
         resetToken: token,
         resetTokenExpiry: {

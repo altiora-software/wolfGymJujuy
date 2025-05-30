@@ -1,34 +1,50 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
+// src/middleware.ts
+import { NextRequest, NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 
-const JWT_SECRET = process.env.JWT_SECRET || "secret_key";
+// Reemplazá este secret por el que usás para firmar el token
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "secret_key");
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
 
-  const protectedPaths = ["/dashboard", "/admin", "/entrenador"];
-  const { pathname } = request.nextUrl;
-
-  // Solo proteger rutas específicas
-  if (protectedPaths.some((path) => pathname.startsWith(path))) {
-    if (!token) {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
-
-    try {
-      jwt.verify(token, JWT_SECRET);
-      return NextResponse.next(); // usuario autenticado
-    } catch (err) {
-      console.error("Token inválido:", err);
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
+  // Si no hay token, redirigir al login
+  if (!token) {
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  return NextResponse.next(); // rutas públicas siguen
+  try {
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+
+    const role = payload.role as "ADMIN" | "TRAINER" | "USER";
+
+    const pathname = request.nextUrl.pathname;
+
+    // Protegemos según rol
+    if (pathname.startsWith("/dashboard/admin") && role !== "ADMIN") {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    if (pathname.startsWith("/dashboard/trainer") && role !== "TRAINER") {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    if (pathname.startsWith("/dashboard/user") && role !== "USER") {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    return NextResponse.next();
+  } catch (error) {
+    console.error("Token inválido:", error);
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 }
 
+// Solo aplicamos el middleware a las rutas necesarias
 export const config = {
-    matcher: ["/dashboard/:path*", "/admin/:path*", "/entrenador/:path*"],
-  };
-  
+  matcher: [
+    "/dashboard/admin/:path*",
+    "/dashboard/trainer/:path*",
+    "/dashboard/user/:path*",
+  ],
+};

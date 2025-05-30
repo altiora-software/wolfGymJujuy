@@ -4,6 +4,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
+
+type DecodedToken = {
+  id: string;
+  email: string;
+  role: "ADMIN" | "TRAINER" | "USER";
+  exp: number;
+};
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,6 +21,8 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+
     try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -22,8 +32,23 @@ export default function LoginPage() {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Error al iniciar sesión");
-
-      router.push("/dashboard");
+      console.log('data',data);
+      console.log('data',data.user.role);
+      // Redirigir según el rol
+      switch (data.user.role) {
+        case "ADMIN":
+          router.push("/dashboard/admin");
+          break;
+        case "TRAINER":
+          router.push("/dashboard/trainer");
+          break;
+        case "USER":
+          router.push("/dashboard/user");
+          break;
+        default:
+          setError("Rol desconocido. Contactá al administrador.");
+          break;
+      }
     } catch (err: any) {
       setError(err.message);
     }
@@ -35,7 +60,9 @@ export default function LoginPage() {
         onSubmit={handleLogin}
         className="bg-[#1e1e1e] p-8 rounded-lg shadow-md w-full max-w-sm"
       >
-        <h1 className="text-3xl font-bold text-red-600 mb-4 text-center">Iniciar Sesión</h1>
+        <h1 className="text-3xl font-bold text-red-600 mb-4 text-center">
+          Iniciar Sesión
+        </h1>
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
         <input

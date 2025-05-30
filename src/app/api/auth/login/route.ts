@@ -5,6 +5,8 @@ import prisma from "@/lib/prisma";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret_key";
 
+export const runtime = "nodejs";
+
 export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
